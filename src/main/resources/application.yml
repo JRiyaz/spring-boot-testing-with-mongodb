@@ -1,0 +1,27 @@
+spring:
+
+  # Mongo Atlas Connection
+  data:
+    mongodb:
+      url: mongodb+srv://Cloud:cloud@cluster-one.cbyjs.mongodb.net/spring-boot?retryWrites=true&w=majority
+
+  #Multipart properties
+  http:
+    multipart:
+      enabled: true
+      max-file-size: 30MB
+      max-request-size: 30MB
+
+#  thymeleaf Configuration
+thymeleaf:
+prefix: classpath:/templates/
+suffix: .html
+
+#   Server port
+server:
+  port: 5555
+
+  #Disable Whitelabel error
+  error:
+    whitelabel:
+      enabled: false
