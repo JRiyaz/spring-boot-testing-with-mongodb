@@ -18,7 +18,7 @@
     <description>Demo project for Spring Boot Testing with MongoDB</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>16</java.version>
     </properties>
 
     <dependencies>
