@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Files</title>
+</head>
+<body>
+<h1>All Files</h1>
+<th:block th:each="file : ${files}">
+    <div>
+        Title:
+        <a th:href="@{/file/{id}(id = ${file.id})}">
+            <span th:text="${file.title}">name</span>
+        </a>
+        <img th:alt="${file.title}"
+             th:src="@{'data:image/png;base64,' + ${file.binaryToImage(file.file)}}"
+             width="250" height="200"/>
+        <a th:href="@{/file/delete/{id}(id = ${file.id})}">delete</a>
+    </div>
+    <br/>
+</th:block>
+</body>
+</html>

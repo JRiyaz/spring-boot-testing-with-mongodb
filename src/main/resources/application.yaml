@@ -5,15 +5,14 @@
 #      password: password
 #      uri: mongodb://host:27017/db
 
+#spring:
+#  # Mongo Atlas Connection
+#  data:
+#    mongodb:
+#      url: 'mongodb+srv://Cloud:cloud@cluster-one.cbyjs.mongodb.net/spring-boot?retryWrites=true&w=majority'
+
+#Multipart properties
 spring:
-
-  # Mongo Atlas Connection
-  data:
-    mongodb:
-      url: mongodb+srv://Cloud:cloud@cluster-one.cbyjs.mongodb.net/spring-boot?retryWrites=true&w=majority
-
-
-  #Multipart properties
   http:
     multipart:
       enabled: true

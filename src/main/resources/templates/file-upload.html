@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload File</title>
+</head>
+<body>
+<h1>Upload new Photo</h1>
+<form method="POST" th:action="@{file/add}" enctype="multipart/form-data">
+    <label for="title">Title</label>
+    <input id="title" type="text" name="title"/>
+    <br/>
+    <br/>
+    <label for="image">Image</label>
+    <input id="image" type="file" name="file" accept="image/*"/>
+    <br>
+    <br>
+    <input type="submit" value="Upload"/>
+</form>
+</body>
+</html>
