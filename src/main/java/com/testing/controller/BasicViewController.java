@@ -9,6 +9,6 @@ public class BasicViewController implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("file-upload");
+        registry.addViewController("/").setViewName("index");
     }
 }

@@ -10,7 +10,7 @@
 <h1 th:text="${file.title}"></h1>
 <div>
     <img th:alt="${file.title}"
-         th:src="@{'data:image/png;base64,' + ${file.binaryToImage(file.file)}}"
+         th:src="@{'data:image/png;base64,' + ${file.file}}"
          width="500" height="400"/>
     <a th:href="@{/file/delete/{id}(id = ${file.id})}">delete</a>
 </div>

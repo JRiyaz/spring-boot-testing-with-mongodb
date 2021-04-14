@@ -27,17 +27,8 @@ public class File {
         this.file = file;
     }
 
-    public String binaryToImage(Binary file) {
-
-        if (file != null)
-            return Base64.getEncoder()
-                    .encodeToString(file.getData());
-        else
-            return "Null pointer";
+    public String getFile() {
+        return Base64.getEncoder()
+                .encodeToString(file.getData());
     }
-
-//    public String getImage() {
-//        return Base64.getEncoder()
-//                .encodeToString(file.getData());
-//    }
 }
