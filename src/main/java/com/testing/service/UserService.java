@@ -28,6 +28,10 @@ public class UserService {
         return repository.findAll();
     }
 
+    public Optional<User> findByIdAndEmail(String id, String email) {
+        return repository.findByIdAndEmail(id, email);
+    }
+
     public void deleteById(String id) {
         repository.deleteById(id);
     }
