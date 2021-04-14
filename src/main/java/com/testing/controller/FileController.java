@@ -5,6 +5,8 @@ import com.testing.service.FileService;
 import org.bson.BsonBinarySubType;
 import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,13 +44,24 @@ public class FileController {
                            Model model) throws IOException {
 
         final Binary binary = new Binary(BsonBinarySubType.BINARY, file.getBytes());
-        final File fileEntity = new File(title, binary);
+        final File fileEntity = new File(title, binary, file.getContentType());
 
         System.out.println(file.getContentType());
 
         service.save(fileEntity);
         model.addAttribute("files", service.findAll());
         return "redirect:/file/all?file-added=true";
+    }
+
+    @GetMapping("download/{id}")
+    public ResponseEntity downloadFile(@PathVariable String id) {
+        final File file = service.findById(id).get();
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION,
+                        "attachment; filename=\""
+                                + file.getTitle()
+                                + "." + file.getType().substring(6) + "\"")
+                .body(file.getFile().getData());
     }
 
     @GetMapping("delete/{id}")

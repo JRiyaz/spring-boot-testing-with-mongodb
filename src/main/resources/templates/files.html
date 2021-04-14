@@ -15,7 +15,7 @@
             <span th:text="${file.title}">name</span>
         </a>
         <img th:alt="${file.title}"
-             th:src="@{'data:image/png;base64,' + ${file.file}}"
+             th:src="@{'data:image/png;base64,' + ${file.binaryToImage(file.file)}}"
              width="250" height="200"/>
         <a th:href="@{/file/delete/{id}(id = ${file.id})}">delete</a>
     </div>

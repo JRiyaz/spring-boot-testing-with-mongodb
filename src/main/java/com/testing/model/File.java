@@ -20,15 +20,23 @@ public class File {
 
     private String title;
 
+    private String type;
+
     private Binary file;
 
-    public File(String title, Binary file) {
+    public File(String title, Binary file, String type) {
         this.title = title;
         this.file = file;
+        this.type = type;
     }
 
-    public String getFile() {
+    public String binaryToImage(Binary file) {
         return Base64.getEncoder()
                 .encodeToString(file.getData());
     }
+
+//    public String getFile() {
+//        return Base64.getEncoder()
+//                .encodeToString(file.getData());
+//    }
 }
