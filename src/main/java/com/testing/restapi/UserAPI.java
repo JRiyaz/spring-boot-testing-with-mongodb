@@ -1,5 +1,6 @@
-package com.testing.controller;
+package com.testing.restapi;
 
+import com.testing.exceptions.UserNotFoundException;
 import com.testing.model.User;
 import com.testing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("user")
-public class UserController {
+public class UserAPI {
 
     @Autowired
     private UserService service;
@@ -26,12 +27,15 @@ public class UserController {
 
     @GetMapping("{id}")
     public User findById(@PathVariable String id) {
-        return service.findById(id).get();
+        return service.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User with Id: " + id + " not found."));
     }
 
     @PutMapping("{id}")
     public User updateUser(@PathVariable String id, @RequestBody User user) {
-        final User userEntity = service.findById(id).get();
+        final User userEntity = service.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User with Id: " + id + " not found."));
+
         userEntity.setName(user.getName())
                 .setEmail(user.getEmail())
                 .setGender(user.getGender());

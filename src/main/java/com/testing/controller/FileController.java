@@ -1,5 +1,6 @@
 package com.testing.controller;
 
+import com.testing.exceptions.FileNotFoundException;
 import com.testing.model.File;
 import com.testing.service.FileService;
 import org.bson.BsonBinarySubType;
@@ -34,7 +35,9 @@ public class FileController {
 
     @GetMapping("{id}")
     public String file(@PathVariable String id, Model model) {
-        model.addAttribute("file", service.findById(id).get());
+        final File file = service.findById(id)
+                .orElseThrow(() -> new FileNotFoundException("File with Id: " + id + " not found"));
+        model.addAttribute("file", file);
         return "file";
     }
 
@@ -55,7 +58,9 @@ public class FileController {
 
     @GetMapping("download/{id}")
     public ResponseEntity downloadFile(@PathVariable String id) {
-        final File file = service.findById(id).get();
+        final File file = service.findById(id)
+                .orElseThrow(() -> new FileNotFoundException("File with Id: " + id + " not found"));
+
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION,
                         "attachment; filename=\""
