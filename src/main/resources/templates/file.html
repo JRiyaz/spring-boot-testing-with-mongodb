@@ -12,6 +12,7 @@
     <img th:alt="${file.title}"
          th:src="@{'data:image/png;base64,' + ${file.file}}"
          width="500" height="400"/>
+    <br/>
     <a th:href="@{/file/delete/{id}(id = ${file.id})}">delete</a>
 </div>
 </body>

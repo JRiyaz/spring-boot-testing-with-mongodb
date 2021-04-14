@@ -13,6 +13,8 @@
 
 #Multipart properties
 spring:
+  profiles:
+    active: dev
   http:
     multipart:
       enabled: true

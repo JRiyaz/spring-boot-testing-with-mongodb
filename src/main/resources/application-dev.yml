@@ -3,7 +3,6 @@ spring:
   thymeleaf:
     prefix: file:src/main/resources/templates/
     cache: false
-    mode: LEGACYHTML5
 
   # Static resources reloading during development
   resources:
