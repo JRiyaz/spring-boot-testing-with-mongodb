@@ -7,6 +7,7 @@ import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.Base64;
 
 @Data
@@ -18,10 +19,13 @@ public class File {
     @Id
     private String id;
 
+    @NotEmpty(message = "Title field cannot be empty")
     private String title;
 
+    @NotEmpty(message = "Type field cannot be empty")
     private String type;
 
+    @NotEmpty(message = "File cannot be empty")
     private Binary file;
 
     public File(String title, Binary file, String type) {
@@ -34,9 +38,4 @@ public class File {
         return Base64.getEncoder()
                 .encodeToString(file.getData());
     }
-
-//    public String getFile() {
-//        return Base64.getEncoder()
-//                .encodeToString(file.getData());
-//    }
 }

@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,10 +18,14 @@ public class User {
     @Id
     private String id;
 
+    @NotEmpty(message = "Name field cannot be empty")
     private String name;
 
+    @Email(message = "Invalid Email ID")
+    @NotEmpty(message = "Email field cannot be empty")
     private String email;
 
+    @NotEmpty(message = "Gender field cannot be empty")
     private String gender;
 
     public User setId(String id) {
