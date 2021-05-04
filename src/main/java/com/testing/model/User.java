@@ -28,6 +28,12 @@ public class User {
     @NotEmpty(message = "Gender field cannot be empty")
     private String gender;
 
+    public User(String name, String email, String gender) {
+        this.name = name;
+        this.email = email;
+        this.gender = gender;
+    }
+
     public User setId(String id) {
         this.id = id;
         return this;

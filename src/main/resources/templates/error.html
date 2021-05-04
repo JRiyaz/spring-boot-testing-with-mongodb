@@ -116,6 +116,7 @@
          width: 100%;
          margin: 0 !important
          }
+
     </style>
 </head>
 <body>
@@ -124,10 +125,20 @@
         <div class="notfound-404"
              th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
             <h1 th:text="${#strings.substring(httpStatus, 0, 3)}">404</h1>
-            <h2 th:text="${#strings.substring(httpStatus, 3, #strings.length(httpStatus))}">Page Not Found</h2>
+            <h2 th:text="${#strings.replace(#strings.substring(httpStatus, 3, #strings.length(httpStatus)),'_',' ')}">
+                Page Not Found
+            </h2>
         </div>
         <a th:href="@{/}" class="mx-3">Home Page</a>
     </div>
+    <!--Footer Starts-->
+    <footer class="mt-auto text-center">
+        <p class="text-white">
+            Designed & Developed by
+            <a href="https://jriyaz.github.io/Portfolio/" target="_blank" style="color: #ff005a;">Riyaz J</a>.
+        </p>
+    </footer>
+    <!--Footer Ends-->
 </div>
 </body>
 </html>
